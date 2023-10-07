@@ -56,10 +56,30 @@ Here are some keyboard-specific properties:
  - `shiftKey` -- boolean value that indicates whether the user pressed the shift key
  - `alkKey`, `ctrlKey`, `metaKey` -- boolean that indicates whether the user presssed the alt, control, or meta (command) key
  
+** if  you are manipulating the DOM with an event listener, use the `DOMContentLoaded` event (I think)
 
+`setInterval(callback, interval)` repeatedly executes `callback` every `interval` milliseconds
 
+## JS Promises
+Promises solve the problem that callbacks solve. They are objects that represent an eventual value
 
+A `Promise` is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason
 
+A Promise is in one of three states: pending, fulfilled, or rejected.
+
+```JS
+var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+});
+```
+Note: All synchronous code runs before asynchronous code
 
 
 
