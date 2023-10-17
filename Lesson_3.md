@@ -110,6 +110,32 @@ form.addEventListener('submit', event => {
 });
 ```
 
+### Submitting a form via XHR
+There are 3 steps to submitting a form using JavaScript:
+ 1. serialize the form data
+ 2. send the request using `XMLHttpRequest`
+ 3. handle the response
+
+Post request:
+```JS
+let request = new XMLHttpRequest();
+request.open('POST', 'https://lsjs230-book-catalog.herokuapp.com/books');
+
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+let data = 'title=Effective%20JavaScript&author=David%20Herman';
+
+request.addEventListener('load', () => {
+  if (request.status === 201) {
+    console.log(`This book was added to the catalog: ${request.responseText}`);
+  }
+});
+
+request.send(data);
+```
+Line 4 above is used to encode POST parameters
+
+`formData` makes it easy to serialize form data. It uses a different serialization format called multipart
 
 ### Cross Origin Requests
 A cross-origin request happens when the page tries to access a resource from a different origin (could be a different scheme, host, or port)
