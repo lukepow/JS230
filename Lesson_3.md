@@ -87,6 +87,15 @@ request.addEventListener('load', event => {
 
 Before `loadend` triggers, another event will fire based on whether the request succeeded: `load`, `abort`, `error`, or `timeout`
 
+There are several different request serialization formats:
+ - Query string / URL encoding
+   - `encodeURIComponent` lets you encode a name or value using this format
+   - You can then combine the name/value pairs with `=` and combine the resulting strings with `&`
+   - You can also use this with POST requests but you must set a content-type header of `application/x-www-form-urlencoded`
+ - JSON
+   - You must set the content-type header to `application/json; charset=utf-8`
+   -  
+
 Using the `formData` API to serialize your data:
 ```JS
 let form = document.getElementById('form');
